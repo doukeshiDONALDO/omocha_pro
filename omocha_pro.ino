@@ -25,7 +25,7 @@ const int ledPin_6 =  6;      // 三色LED6
 const int ledPin_7 =  7;      // 三色LED7
 const int ledPin_8 =  8;      // 三色LED8
 
-const int d_time = 400;     // delay time ms
+const int d_time = 200;     // delay time ms
 
 //点灯パターン
 int pattern[9][3] = {
@@ -128,7 +128,7 @@ void loop() {
   buttonState5 = digitalRead(buttonPin5);
   buttonState6 = digitalRead(buttonPin6);
   buttonState7 = digitalRead(buttonPin7);
-  buttonState8 = (analogRead(7) > 700)? 1:0;
+  buttonState8 = (analogRead(7) > 700)? 0:1;
   
 
   if (buttonState0 == LOW && buttonState1 == LOW && buttonState2 == LOW) {
@@ -173,6 +173,21 @@ void loop() {
   }
   else if (buttonState6 == LOW && buttonState7 == LOW && buttonState8 == HIGH) {
     swap(6,7);
+    delay(d_time);
+  }
+
+    if (buttonState1 == LOW && buttonState4 == LOW && buttonState7 == LOW) {
+    delay(d_time);
+  } else if (buttonState1 == HIGH && buttonState4 == LOW && buttonState7 == LOW) {
+    swap(4,7);
+    delay(d_time);
+  }
+  else if (buttonState1 == LOW && buttonState4 == HIGH && buttonState7 == LOW) {
+    swap(1,7);
+    delay(d_time);
+  }
+  else if (buttonState1 == LOW && buttonState4 == LOW && buttonState7 == HIGH) {
+    swap(1,4);
     delay(d_time);
   }
 
